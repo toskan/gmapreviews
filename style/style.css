@@ -1,0 +1,479 @@
+/*
+Project Name: Reviews Project
+Author: Tamar Oskanian
+Developer: tamar.oskanian@gmail.com in NYC
+*/
+
+* {
+     -moz-box-sizing: border-box; 
+     -webkit-box-sizing: border-box; 
+     box-sizing: border-box; 
+}
+body {
+     height: 100vh;
+     width: 100vw;
+     margin: 0;
+     font-family: 'Open Sans', sans-serif;
+     color: black;
+}
+#container {
+     display: flex;
+     flex-direction: column;
+     height: 100%;
+     width: 100%;
+}
+#input-div {
+     display: flex;
+}
+#search-input {
+     width: 90%;
+     /* outline: none; */
+     outline-color: #C0C0C0;
+     border: none;
+     padding: .5em;
+     margin-left: 1em;
+     height: 4em;
+     flex-grow: 1;
+     font-family: inherit;
+}
+input:focus {
+     outline:none;
+}
+#submit {
+     border: .35em solid white;
+     outline-color: #C0C0C0;
+     /* outline: none; */
+     background-color: #34a853;
+     cursor: pointer;
+     height: 4.15em;
+     width: 4.15em;
+}
+button:focus { 
+     outline-color: #C0C0C0;
+}
+button {
+     cursor: pointer;
+}
+.fa-map-marker-alt {
+     font-size: 1.4em;
+     color: #F0F0F0;
+}
+#map-container {
+     display: flex;
+     flex-direction: column;
+     flex-grow: 1;
+     overflow: hidden;
+}
+#map {
+     flex-grow: 1;
+}
+#map-div {
+     display: flex;
+     flex-grow: 1;
+}
+#post-search-pop-up {
+     width: 35%;
+}
+#google-div {
+     margin: 3.5em 0 0 1em;
+     overflow: auto;
+}
+#results-bar {
+     display: flex;
+     background-color: white;
+     position: absolute;
+     z-index: 100;
+     margin-left: .05em;
+}
+#results-bar button {
+     /* outline: none; */
+     outline-color: #C0C0C0;
+     border: none;
+     height: 4em;
+     width: 4em;
+     margin: .05em;
+     cursor: pointer;
+     background-color: #F0F0F0;
+}
+#google-button {
+     margin-top: 1.95em;
+}
+#toggle-button {
+     height: 6em;
+     width: 2.5em;
+     border: none;
+     cursor: pointer;
+     background-color: #F0F0F0;
+     outline-color: #C0C0C0;
+}
+#toggle-button:hover {
+     background-color: #D0D0D0;
+}
+.fa-yelp {
+     color: #D32323;
+     font-size: 1.8em;
+}
+.fa-google {
+     color: #4285f4;
+     font-size: 1.8em;
+}
+.fa-comments {
+     font-size: 1.8em;
+     color: #34a853;
+}
+#toggle-button-div {
+     margin-left: auto;
+     position: absolute;
+     top: 20vh;
+     left: 35%;
+     z-index: 1000;
+}
+#toggle-button-div.left-position-toggle {
+     left: 0%;
+}
+.fa-caret-left, .fa-caret-right {
+     font-size: 1.8em;
+}
+::-webkit-scrollbar {
+     width: 1em;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+     background: #F0F0F0; 
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+     background: #D0D0D0;  
+}
+.google-name {
+     font-size: 1.1em;
+}
+#google-data {
+     margin-top: 3em;
+     font-size: .9em;
+}
+.google-reviews-data {
+     margin: 2.5em 0 2.5em 0;
+}
+.google-rating {
+     margin: 0;
+}
+#google-review-number {
+     margin: 0;
+     font-size: 0.88em;
+}
+.google-total-number-reviews {
+     margin: 0;
+     font-size: 0.88em;
+}
+.google-rating .fa-star, .google-rating .fa-star-half-alt, .google-rating .fa-star {
+     color: #F4B400;
+     font-size: 0.9em;
+}
+.google-reviews-data .fa-star, .google-reviews-data .fa-star-half-alt, .google-reviews-data .fa-star {
+     color: #F4B400;
+     font-size: 0.7em;
+}
+.google-author {
+     font-size: 0.9em;
+     font-weight: 600;
+     margin: 0;
+}
+.google-author p {
+     margin: 0;
+}
+.google-reviewer-rating {
+     margin: 0;
+}
+.google-review-rating {
+     margin: 0;
+     font-size: 0.8em;
+}
+.google-review {
+     font-size: 0.9em;
+     margin: 1em .5em 1em 0;
+}
+.google-review-time {
+     font-size: 0.85em;
+}
+#yelp-div {
+     margin: 5em 0 0 1em;
+     overflow: auto;
+}
+#yelp-data-reviews {
+     margin-bottom: 3em;
+}
+#review-div {
+     margin: 5em 1em 0 1em;
+     overflow: auto;
+     display: flex;
+     flex-direction: column;
+     margin-right: auto;
+}
+#google-link {
+     margin-bottom: 2.5em;
+}
+#yelp-link {
+     margin-bottom: 4em;
+}
+#google-link ul, #yelp-link ul {
+     list-style: none;
+     font-size: 1em;
+     text-align: center;
+     padding-left: 0;
+}
+#google-link li, #yelp-link li {
+     margin:0px auto;
+}
+#google-link a, #yelp-link a {
+     text-decoration: none;
+     color: black;
+     background-color: #F0F0F0;
+     padding: .8em;
+     font-weight: 500;
+}
+#google-link a:hover, #yelp-link a:hover {
+     background-color: #D0D0D0;
+     color: #34a853;
+}
+#business-image {
+     width: 70%;
+     height: auto;
+     margin: 2em 0 2em 0;
+}
+#star-rating {
+     margin: 0;
+}
+.yelp-rating {
+     margin: 0;
+     font-weight: 600;
+     font-size: 1.2em;
+}
+p.yelp-total-number-reviews {
+     margin: 0;
+     font-size: 0.9em;
+}
+.yelp-author {
+     margin: 0;
+     margin-bottom: .5em;
+     font-weight: 600;
+     font-size: 1.1em;
+}
+#star-rating {
+     margin: 0;
+}
+.yelp-reviewer-rating {
+     margin: 0;
+     font-size: 1em;
+}
+.yelp-review {
+     font-size: 1em;
+     margin: 1em 0 1em 0;
+}
+.yelp-review-time {
+     font-size: 0.9em;
+     margin-bottom: 2.5em;
+}
+#review {
+     height: 350px;
+     width: 90%;
+     font-family: 'Open Sans', sans-serif;
+     outline-color: #34a853;
+     border: .08em solid #34a853;
+     padding: 1em;
+     resize: none;
+}
+.review-select-div {
+     unicode-bidi: bidi-override;
+     direction: rtl;
+     float: left;
+}
+.review-select-div > span {
+     display: inline-block;
+     position: relative;
+     color: #34a853;
+     font-size: 1.5em;
+     margin: .5em 0;
+}
+#review-select-stars > span:hover:before,
+#review-select-stars > span:hover ~ span:before {
+     content: "\2605";
+     position: absolute;
+}
+#business-name {
+     font-weight: 600;
+     font-size: 1em;
+     margin-bottom: 0;
+}
+#input-update {
+     font-family: inherit;
+}
+#average-review-rating { 
+     color: #34a853;
+     font-size: 1.2em;
+     margin: 0;
+     margin-top: .5em;
+}
+#average-review-rating-nr {
+     margin: 0;
+     font-size: 1em;
+}
+#average-review-rating-out-of {
+     margin: 0;
+     margin-bottom: 1em;
+     font-size: 0.9em;
+}
+.review-buttons {
+     border: none;
+     background-color: #F0F0F0;
+     width: 9em;
+     height: 3em;
+     color: #34a853;
+     font-weight: 500;
+}
+.review-buttons:hover {
+     background-color: #D0D0D0;
+}
+#reviews-panel {
+     margin: 2em 0 5em 0;
+     display: flex;
+     flex-direction: column;
+}
+.submit-review {
+     border-top: .1em solid #34a853;
+     margin-top: .5em;
+     margin-right: 1em;
+}
+.review-heading {
+     font-size: 1.5em;
+     font-weight: 600;
+     margin-bottom: .5em;
+}
+.review-p {
+     display: inline-block;
+     width: 100%;
+     margin: 0;
+     font-size: 1em;
+     text-indent: .8em;
+     white-space: pre-wrap;
+     font-family: 'Open Sans', sans-serif;
+}
+.name-p {
+     font-size: 1em;
+     font-weight: 600;
+     margin-bottom: .8em;
+}
+#review-board {
+     display: flex;
+     flex-direction: column;
+}
+.reviewer-name {
+     width: 90%;
+     font-family: 'Open Sans', sans-serif;
+     outline-color: #34a853;
+     border: .08em solid #34a853;
+     padding: 1em;
+     margin: .5em 0 1em 0;
+}
+.loader-container {
+     position: absolute;
+     left: 50%;
+     top: 15%;
+     margin-left: -15em;
+     z-index: 9999999;
+}
+.loader {
+     border: 1.5em solid rgba(52,168,83, 0.2);
+     border-radius: 50%;
+     border-top: 1.5em solid rgba(52,168,83, 0.5);
+     width: 30em;
+     height: 30em;
+     -webkit-animation: spin 2s linear infinite;
+     animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+     0% { -webkit-transform: rotate(0deg); }
+     100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+     0% { transform: rotate(0deg); }
+     100% { transform: rotate(360deg); }
+}
+.delete-button, .update-button {
+     color: #34a853;
+     padding: .4em;
+     font-size: 1.1em;
+     border: none;
+     margin-right: .1em;
+     margin-bottom: 1em;
+     background-color: #F0F0F0;
+     cursor: pointer;
+}
+.delete-button:hover, .update-button:hover {
+     background-color: #D0D0D0;
+}
+
+@media screen and (max-width: 768px)  and (orientation: portrait) {
+     #post-search-pop-up {
+          width: 100%;
+     }
+     #toggle-button-div {
+          left: 0%;
+     }
+     #google-div {
+          margin: 3.5em 0 0 2.5em;
+     }
+     #yelp-div {
+          margin: 5em 0 0 2.5em;
+     }
+     #review-div {
+          margin: 5em 1em 0 2.5em;
+     }
+     .loader-container {
+          left: 50%;
+          top: 40%;
+          margin-left: -5em;
+     }
+     .loader {
+          width: 10em;
+          height: 10em;
+     }
+     #business-image {
+          width: 75%;
+     }
+}
+
+@media screen and (max-width: 1024px)  and (orientation: landscape)  {
+     #post-search-pop-up {
+          width: 100%;
+     }
+     #toggle-button-div {
+          left: 0%;
+          top: 35vh;
+     }
+     #toggle-button-div.left-position-toggle {
+          top: 35vh;
+     }
+     #google-div {
+          margin: 3.5em 0 0 5em;
+     }
+     #yelp-div {
+          margin: 5em 0 0 5em;
+     }
+     #review-div {
+          margin: 5em 1em 0 5em;
+     }
+     .loader-container {
+          left: 50%;
+          top: 25%;
+          margin-left: -5em;
+     }
+     .loader {
+          width: 10em;
+          height: 10em;
+     }
+     #business-image {
+          width: 45%;
+     }
+}
+

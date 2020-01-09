@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <title>Reviews API</title>
+          <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+          <link rel="stylesheet" href="./style/style.css">
+          <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700i&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+          <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+          <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+          <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+          <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+          <script
+               src="https://code.jquery.com/jquery-3.4.1.js"
+               integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+               crossorigin="anonymous"></script>
+          <script type='text/javascript' src='config.js'></script>
+          <script type="text/javascript" src="./js/script.js"></script>
+          <script id="secret-google-script" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB42XBJpVxvjANLuAh_I5mED4zHGjHHXyA&libraries=places&callback=initMap" async defer></script>
+     </head>
+
+     <body>
+
+          <div id="container">
+
+               <div id="input-div"> 
+                    <input type="text" name="search" placeholder="search locations" id="search-input"> 
+                    <button type="button" id="submit"><i class="fas fa-map-marker-alt"></i></button>
+               </div>
+
+               <div class="loader-container">
+                    <div class="loader"></div>
+               </div>
+               
+               <div id="map-container">
+                    <div id="map-div">
+
+                         <div id="post-search-pop-up">
+
+                              <div id="results-bar">
+                                   <button name="button" id="google-button"><i class="fab fa-google"></i></button>
+                                   <button name="button" id="yelp-button"><i class="fab fa-yelp"></i></button>
+                                   <button name="button" id="comments-button"><i class="fas fa-comments"></i></button>
+                              </div>
+                              
+                              <div id="google-div">
+                                   <div id="google-data"></div>
+                                   <div id="google-data-reviews"></div>
+                                   <div id="google-link"></div>
+                              </div>
+
+                              <div id="yelp-div">
+                                   <div id="yelp-data"></div>
+                                   <div id="yelp-data-reviews"></div>
+                                   <div id="yelp-link"></div>
+                              </div>
+                         
+                         <div id="review-div">
+
+                              <div id="message-div">
+                                   <h2 id="business-name"></h2>
+                                   <p id="average-review-rating"></p>
+                                   <p id="average-review-rating-nr"></p>
+                                   <p id="average-review-rating-out-of"></p>
+                                   <button id="write-review-btn" class="review-buttons">Write A Review</button>
+                                   <form id="review-form">
+                                        <div id="review-select-stars" class="review-select-div">
+                                             <span class="span-star">☆</span><span class="span-star">☆</span><span class="span-star">☆</span><span class="span-star">☆</span><span class="span-star">☆</span>
+                                        </div>
+                                        <textarea id="review" type="text" class="form-control" placeholder="Leave your rating and review"></textarea>
+                                        <input type="text" class="reviewer-name" placeholder="Name">
+                                        <button id="submit-review-btn" class="review-buttons">Submit Review</button>
+                                   </form>
+                              </div>
+                                   
+                              <div id="reviews-panel">
+                                   <div class="review-heading">Reviews</div>
+                                   <div class="review-body">
+                                        <div id="review-board">
+                                        </div>
+                                   </div>
+                              </div>
+
+                              </div>
+                                             
+                         </div>
+
+                         <div id="map"></div>
+                    </div>
+               </div>
+
+               <div id="toggle-button-div">
+                    <button name="button" id="toggle-button" title="Toggle side panel"><i class="fas fa-caret-left fa-caret-right"></i>
+               </div>
+
+          </div>         
+
+          
+          
+          </body>
+
+     </html>
